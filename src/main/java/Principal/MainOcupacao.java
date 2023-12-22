@@ -3,6 +3,7 @@ package Principal;
 import Classes.Cliente;
 import Classes.Ocupacao;
 import Classes.Quarto;
+import Exceptions.AtributoComOcupacaoExeption;
 import Exceptions.EntidadeNaoEncontradaException;
 import Services.ClienteService;
 import Services.OcupacaoService;
@@ -32,6 +33,8 @@ public class MainOcupacao {
         int id;
         Date data;
         String inputData;
+        Date dataInicio = null;
+        Date dataFim = null;
 
         SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -39,9 +42,9 @@ public class MainOcupacao {
             System.out.println("========================================================");
             System.out.println("O que você deseja fazer?");
             System.out.println("1 - Cadastrar uma ocupação");
-            System.out.println("2 - Alterar uma Ocupação");
+            System.out.println("2 - Alterar uma ocupação");
             System.out.println("3 - Remover uma ocupação");
-            System.out.println("4 - Lista as ocupações");
+            System.out.println("4 - Listar as ocupações");
             System.out.println("5 - Voltar");
 
             escolha = input.nextInt();
@@ -73,14 +76,20 @@ public class MainOcupacao {
                             String inputDataFim = input.next();
 
                             try {
-                                Date dataInicio = formatoData.parse(inputDataInicio);
-                                Date dataFim = formatoData.parse(inputDataFim);
+                                dataInicio = formatoData.parse(inputDataInicio);
+                                dataFim = formatoData.parse(inputDataFim);
 
-                                ocupacao = new Ocupacao(cliente, dataInicio, dataFim);
-                                ocupacaoService.incluirOcupacao(ocupacao);
-                                System.out.println("Ocupação criada com sucesso!");
                             } catch (ParseException ex) {
                                 System.out.println("Formato de data inválido. Certifique-se de inserir no formato correto (dd/MM/yyyy).");
+                                break;
+                            }
+
+                            if(cliente.getOcupacao() == 0) {
+                                ocupacao = new Ocupacao(cliente, dataInicio, dataFim);
+                                ocupacaoService.incluirOcupacao(ocupacao);
+                                cliente.setOcupacao(ocupacao.getId());
+                            } else {
+                                System.out.println("Esse cliente já possui uma ocupação");
                                 break;
                             }
                             break;
@@ -88,8 +97,8 @@ public class MainOcupacao {
                         }
 
                         case 2: {
-                            System.out.println("Os seguintes quartos estão na base de dados:");
                             quartoService.imprimirQuartos();
+                            System.out.println("Os seguintes quartos estão na base de dados:");
                             System.out.println("Qual o id do quarto");
                             id = input.nextInt();
                             try {
@@ -106,18 +115,23 @@ public class MainOcupacao {
                             String inputDataFim = input.next();
 
                             try {
-                                Date dataInicio = formatoData.parse(inputDataInicio);
-                                Date dataFim = formatoData.parse(inputDataFim);
+                                dataInicio = formatoData.parse(inputDataInicio);
+                                dataFim = formatoData.parse(inputDataFim);
 
-
-                                ocupacao = new Ocupacao(quarto, dataInicio, dataFim);
-                                ocupacaoService.incluirOcupacao(ocupacao);
                                 System.out.println("Ocupação criada com sucesso!");
                             } catch (ParseException ex) {
                                 System.out.println("Formato de data inválido. Certifique-se de inserir no formato correto (dd/MM/yyyy).");
                                 break;
                             }
 
+                            if (quarto.getOcupacao() == 0) {
+                                ocupacao = new Ocupacao(quarto, dataInicio, dataFim);
+                                ocupacaoService.incluirOcupacao(ocupacao);
+                                quarto.setOcupacao(ocupacao.getId());
+                            } else {
+                                System.out.println("Esse quarto já possui uma ocupação");
+                                break;
+                            }
                             break;
                         }
 
@@ -152,14 +166,22 @@ public class MainOcupacao {
                             String inputDataFim = input.next();
 
                             try {
-                                Date dataInicio = formatoData.parse(inputDataInicio);
-                                Date dataFim = formatoData.parse(inputDataFim);
+                                dataInicio = formatoData.parse(inputDataInicio);
+                                dataFim = formatoData.parse(inputDataFim);
 
-                                ocupacao = new Ocupacao(cliente, quarto, dataInicio, dataFim);
-                                ocupacaoService.incluirOcupacao(ocupacao);
                                 System.out.println("Ocupação criada com sucesso!");
                             } catch (ParseException ex) {
                                 System.out.println("Formato de data inválido. Certifique-se de inserir no formato correto (dd/MM/yyyy).");
+                            }
+
+                            if (quarto.getOcupacao() == 0 && cliente.getOcupacao() == 0) {
+                                ocupacao = new Ocupacao(cliente, quarto, dataInicio, dataFim);
+                                ocupacaoService.incluirOcupacao(ocupacao);
+                                cliente.setOcupacao(ocupacao.getId());
+                                quarto.setOcupacao(ocupacao.getId());
+                            } else {
+                                System.out.println("Cliente ou quarto já possui uma ocupação");
+                                break;
                             }
                             break;
                         }
@@ -172,16 +194,18 @@ public class MainOcupacao {
                             String inputDataFim = input.next();
 
                             try {
-                                Date dataInicio = formatoData.parse(inputDataInicio);
-                                Date dataFim = formatoData.parse(inputDataFim);
+                                dataInicio = formatoData.parse(inputDataInicio);
+                                dataFim = formatoData.parse(inputDataFim);
 
-                                ocupacao = new Ocupacao(dataInicio, dataFim);
-                                ocupacaoService.incluirOcupacao(ocupacao);
                                 System.out.println("Ocupação criada com sucesso!");
                             } catch (ParseException ex) {
                                 System.out.println("Formato de data inválido. Certifique-se de inserir no formato correto (dd/MM/yyyy).");
                                 break;
                             }
+
+                            ocupacao = new Ocupacao(dataInicio, dataFim);
+                            ocupacaoService.incluirOcupacao(ocupacao);
+
                             break;
 
                         }

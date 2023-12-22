@@ -8,6 +8,7 @@ public class Cliente implements Serializable {
     @Id
     private int id;
     private String nome;
+    private int ocupacao = 0;
 
 
 
@@ -32,7 +33,15 @@ public class Cliente implements Serializable {
         this.nome = nome;
     }
 
+    public int getOcupacao() {
+        return ocupacao;
+    }
+
+    public void setOcupacao(int ocupacao) {
+        this.ocupacao = ocupacao;
+    }
+
     public String toString() {
-        return "Nome: " + this.nome + ", Id: " +  this.id;
+        return this.id + ". Nome: " + this.nome + ", Ocupação: " + this.ocupacao;
     }
 }

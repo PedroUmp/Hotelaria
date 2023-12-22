@@ -1,4 +1,6 @@
 package Dao;
 
-public interface HospedagemDao extends DaoGenerico<HospedagemDao>{
+import Classes.Hospedagem;
+
+public interface HospedagemDao extends DaoGenerico<Hospedagem>{
 }

@@ -10,6 +10,7 @@ public class Quarto implements Serializable {
     private int id;
     private int valorDiaria;
     private int numero;
+    private int ocupacao = 0;
 
 
     public Quarto(int numero, int valorDiaria) {
@@ -44,8 +45,16 @@ public class Quarto implements Serializable {
         return valorDiaria;
     }
 
+    public int getOcupacao() {
+        return ocupacao;
+    }
+
+    public void setOcupacao(int ocupacao) {
+        this.ocupacao = ocupacao;
+    }
+
     @Override
     public String toString() {
-        return "Id: " + this.id + ", Número: " + this.numero + ", Valor diária: " + this.valorDiaria;
+        return this.id + ". Número: " + this.numero + ", Valor diária: " + this.valorDiaria + ", Ocupação: " + this.ocupacao;
     }
 }

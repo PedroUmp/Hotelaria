@@ -3,6 +3,7 @@ package Services;
 import Classes.Cliente;
 import Classes.Ocupacao;
 import Dao.OcupacaoDao;
+import Exceptions.AtributoComOcupacaoExeption;
 import Exceptions.EntidadeNaoEncontradaException;
 import Principal.FabricaDeDaos;
 
@@ -12,7 +13,7 @@ public class OcupacaoService {
 
     private final OcupacaoDao ocupacaoDao = FabricaDeDaos.getDAO(OcupacaoDao.class);
 
-    public Ocupacao incluirOcupacao(Ocupacao ocupacao){
+    public Ocupacao incluirOcupacao(Ocupacao ocupacao) {
         return ocupacaoDao.incluir(ocupacao);
     }
 

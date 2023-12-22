@@ -80,6 +80,9 @@ public class Ocupacao implements Serializable {
     public void setQuarto(Quarto quarto) {
         this.quarto = quarto;
     }
+    public int getId() {
+        return id;
+    }
 
     @Override
     public String toString() {

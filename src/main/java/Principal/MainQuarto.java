@@ -46,6 +46,7 @@ public class MainQuarto {
                 }
 
                 case 2: {
+                    quartoService.imprimirQuartos();
                     System.out.println("Informe o id do quarto \n");
                     id = input.nextInt();
 
@@ -79,6 +80,7 @@ public class MainQuarto {
                     }
 
                     case 3: {
+                        quartoService.imprimirQuartos();
                         System.out.println("Informe o id do quarto \n");
                         numero = input.nextInt();
                         quartoService.removerQuarto(numero);
