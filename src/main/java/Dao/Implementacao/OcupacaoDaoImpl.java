@@ -1,4 +1,7 @@
 package Dao.Implementacao;
 
-public class OcupacaoDaoImpl {
+import Classes.Ocupacao;
+import Dao.OcupacaoDao;
+
+public class OcupacaoDaoImpl extends DaoGenericoImpl<Ocupacao> implements OcupacaoDao {
 }

@@ -1,13 +1,15 @@
 package Classes;
 
 import Dao.ClienteDao;
+import anotacao.Id;
 
-public class Quarto {
-    private static int contador;
+import java.io.Serializable;
+
+public class Quarto implements Serializable {
+    @Id
     private int id;
-    private double valorDiaria;
+    private int valorDiaria;
     private int numero;
-    private Cliente cliente;
 
 
     public Quarto(int numero, int valorDiaria) {
@@ -42,11 +44,8 @@ public class Quarto {
         return valorDiaria;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
+    @Override
+    public String toString() {
+        return "Id: " + this.id + ", Número: " + this.numero + ", Valor diária: " + this.valorDiaria;
     }
 }

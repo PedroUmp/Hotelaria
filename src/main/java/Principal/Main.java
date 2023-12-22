@@ -2,10 +2,11 @@ package Principal;
 
 import Exceptions.EntidadeNaoEncontradaException;
 
+import java.text.ParseException;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws EntidadeNaoEncontradaException {
+    public static void main(String[] args) throws EntidadeNaoEncontradaException, ParseException {
 
         Scanner input = new Scanner(System.in);
         int escolha;
@@ -16,8 +17,8 @@ public class Main {
         System.out.println("Qual classe você deseja tratar: ");
         System.out.println("1 - Cliente");
         System.out.println("2 - Quarto");
-        System.out.println("3 - Hospedagem");
-        System.out.println("4 - Ocupação");
+        System.out.println("3 - Ocupação");
+        System.out.println("4 - Hospedagem");
         System.out.println("5 - Fechar programa");
 
         escolha = input.nextInt();
@@ -33,11 +34,11 @@ public class Main {
                     break;
                 }
                 case 3: {
-                    MainHospedagem.main();
+                    MainOcupacao.main();
                     break;
                 }
                 case 4: {
-                    MainOcupacao.main();
+                    MainHospedagem.main();
                     break;
                 }
                 case 5: {

@@ -1,4 +1,4 @@
 package Dao;
 
-public interface HospedagemDao {
+public interface HospedagemDao extends DaoGenerico<HospedagemDao>{
 }

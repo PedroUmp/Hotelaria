@@ -16,10 +16,10 @@ public class DaoGenericoImpl<V> implements DaoGenerico<V> {
 
 
 
-    public void DAOGenericoImpl() {
-        linkedHashMap = new LinkedHashMap<>(16);
-        contador = 0;
-    }
+//    public void DAOGenericoImpl() {
+//        linkedHashMap = new LinkedHashMap<>(16);
+//        contador = 0;
+//    }
 
     @Override
     public LinkedHashMap<Integer, V> getLinkedHasmap() {

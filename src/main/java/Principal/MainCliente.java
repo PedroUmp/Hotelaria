@@ -39,7 +39,7 @@ public class MainCliente {
                     System.out.println("Qual o nome do cliente");
                     nome = input.next();
                     Cliente novoCliente = new Cliente(nome);
-                    clienteService.incluir(novoCliente);
+                    clienteService.incluir(novoCliente);    
                     System.out.printf("Cliente %s inserido com sucesso", novoCliente.getNome());
                     break;
                 }
@@ -86,10 +86,7 @@ public class MainCliente {
                 }
 
                 case 4: {
-                    List<Cliente> clientes = clienteService.recuperarClientes();
-                    for (Cliente c : clientes) {
-                        System.out.println(c);
-                    }
+                    clienteService.imprimirClientes();
                     break;
                 }
                 case 5: {

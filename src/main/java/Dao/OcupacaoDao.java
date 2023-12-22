@@ -1,4 +1,6 @@
 package Dao;
 
-public interface OcupacaoDao {
+import Classes.Ocupacao;
+
+public interface OcupacaoDao extends DaoGenerico<Ocupacao> {
 }
